@@ -18,7 +18,7 @@ g<sub>i</sub> = A<sub>i</sub> <em>and</em> B<sub>i</sub>
 
 It follows that the carry bits and sum bits can be determined by exploiting the relationships linking them to the p<sub>i</sub> and p<sub>i</sub> signals, as:
 
-Sum<sub>i</sub> = A<sub>i</sub> <em>xor</em> B<sub>i</sub> <em>xor</em> C<sub>i</sub> = p<sub>i</sub> <em>xor</em> Carry<sub>i</sub>  
+Sum<sub>i</sub> = A<sub>i</sub> <em>xor</em> B<sub>i</sub> <em>xor</em> C<sub>i</sub> = p<sub>i</sub> <em>xor</em> C<sub>i</sub>  
 C<sub>i+1</sub> = (A<sub>i</sub> <em>and</em> B<sub>i</sub>) + (A<sub>i</sub> <em>xor</em> B<sub>i</sub>) <em>and</em> C<sub>i</sub> = g<sub>i</sub> + p<sub>i</sub> <em>and</em> C<sub>i</sub>
 
 Using the C<sub>i+1</sub> relationship recursively, we obtain:
@@ -50,5 +50,6 @@ WORK IN PROGRES.........
 ## Key Features
 
 * **N-bit Addition:** Perform addition on two N-bit `std_logic_vector` inputs.
-* **High-Speed Architecture:** Implements the Carry-Lookahead algorithm to minimize the propagation delay associated with carry signals, offering a significant performance advantage over a standard Ripple-Carry Adder.
+* **High-Speed Architecture:** Implements the CLA algorithm based on group propagate and group generate signals to minimize the propagation delay associated with carry signals and minimize fan-in issues, offering a significant performance advantage over a standard RCA.
 * **Scalable Design:** The architecture is configurable, as the implementation has been structured to allow the CLA size to be parameterized during instantiation, depending on the application needs.
+* **2's Complement Representation:** Sign extension has been implemented to ensure the correct representation of negative values. For positive operands, an adequate word length must be used to prevent overflow.
