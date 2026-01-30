@@ -45,7 +45,13 @@ WORK IN PROGRES.........
 
 ## Theorical Architectural Overview
 
-*
+The CLA adder is composed of two fundamental blocks:
+
+1. **FA block:** Dedicated to the generation of the sum and the <em>p<sub>i</sub></em> and <em>g<sub>i</sub></em> signals.
+2. **CLA block:** Dedicated to fast calculation of carryovers using <em>pp<sub>i</sub></em> and <em>gp<sub>i</sub></em>.
+
+![alt text](https://github.com/nullx5/VHDL_SumCarryLookAhead_4bits/blob/master/img/carry_lookahead_adder.svg.png)
+
 
 ## Key Features
 
