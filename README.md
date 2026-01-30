@@ -19,7 +19,7 @@ g<sub>i</sub> = A<sub>i</sub> <em>and</em> B<sub>i</sub>
 
 It follows that the carry bits and sum bits can be determined by exploiting the relationships linking them to the p<sub>i</sub> and p<sub>i</sub> signals, as:
 
-Sum<sub>i</sub> = A<sub>i</sub> <em>xor</em> B<sub>i</sub> <em>xor</em> Carry<sub>i</sub> = p<sub>i</sub> <em>xor</em> Carry<sub>i</sub>
+Sum<sub>i</sub> = A<sub>i</sub> <em>xor</em> B<sub>i</sub> <em>xor</em> Carry<sub>i</sub> = p<sub>i</sub> <em>xor</em> Carry<sub>i</sub>  
 Carry<sub>i+1</sub> = (A<sub>i</sub> <em>and</em> B<sub>i</sub>) <em>or</em> (A<sub>i</sub> <em>xor</em> B<sub>i</sub>) <em>and</em> Carry<sub>i</sub> = g<sub>i</sub> <em>or</em> p<sub>i</sub> <em>and</em> Carry<sub>i</sub>
 
 ## Key Features
