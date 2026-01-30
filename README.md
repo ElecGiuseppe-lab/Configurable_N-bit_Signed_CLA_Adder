@@ -34,11 +34,11 @@ C<sub>i+1</sub> = g<sub>i</sub> + p<sub>i</sub> · C<sub>i</sub> = g<sub>i</sub>
 
 It is clear that the carry bits depend exclusively on the CLA input carry (C<sub>in</sub> = C<sub>0</sub>), as well as the p<sub>i</sub> and g<sub>i</sub> signals.
 Consequently, all carry bits, as well as the sum bits, will be calculated simultaneously, optimizing the sum calculation between two operands. However, the improvement in speed leads to an increase in circuit complexity.  
-In particular, calculating the carry to the i-th stage requires the use of AND and OR logic gates with a number of inputs equal to <em>n</em> + 1. This design choice leads to an increase in the occupied area and introduces greater constraints related to **fan-in** of the logic gates that must be appropriately considered during the design phase.
+In particular, calculating the carry to the i-th stage requires the use of AND and OR logic gates with a number of inputs equal to <em>n</em> + 1. This design choice leads to an increase in the occupied area and introduces greater constraints related to **fan-in** of the logic gates that must be appropriately considered during the design phase.  
 .  
 .  
 .  
-WORK IN PROGRES.........
+WORK IN PROGRES.........  
 .  
 .  
 .  
@@ -49,4 +49,6 @@ WORK IN PROGRES.........
 
 ## Key Features
 
-* 
+* **N-bit Addition:** Perform addition on two N-bit `std_logic_vector` inputs.
+* **High-Speed Architecture:** Implements the Carry-Lookahead algorithm to minimize the propagation delay associated with carry signals, offering a significant performance advantage over a standard Ripple-Carry Adder.
+* **Scalable Design:** The architecture is configurable, as the implementation has been structured to allow the CLA size to be parameterized during instantiation, depending on the application needs.
