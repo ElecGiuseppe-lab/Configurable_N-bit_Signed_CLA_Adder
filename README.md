@@ -52,7 +52,7 @@ The CLA adder is composed of two fundamental blocks:
 * **N-bit Addition:** Perform addition on two N-bit `std_logic_vector` inputs.
 * **High-Speed Architecture:** Implements the CLA algorithm based on <em>p<sub>i</sub></em> and <em>g<sub>i</sub></em> signals to minimize the propagation delay associated with carry signal, offering a significant performance advantage over a standard RCA.
 * **Scalable Design:** The architecture is configurable, as the implementation has been structured to allow the CLA size to be parameterized during instantiation, depending on the application needs.
-* **2's Complement Representation:** Sign extension has been implemented to ensure the correct representation of negative values. For positive operands, an adequate word length must be used to prevent overflow (ex. 255 -> 8-bit to extend 9-bit).
+* **2's Complement Representation:** Sign extension has been implemented to ensure the correct representation of negative values. For positive operands, an adequate word length must be used to prevent overflow (e.g. 255 -> 8-bit to extend 9-bit).
 
 
 ## Architectural Overview
@@ -72,3 +72,22 @@ The design was verified using the `CLA_tb.vhd` testbench. This testbench is self
 ## Behavioral Simulation
 
 ![alt text](https://github.com/ElecGiuseppe-lab/N-bit_Configurable_CLA/blob/master/img/CLA_tb.png)
+
+
+## Possible Improvements
+
+* **Synthesis and Implementation:** The next logical step for this project is to synthesize the design for a target FPGA device. This process would provide key metrics on hardware resource utilization (LUTs, FFs), power dissipation and timing performance (maximum operating frequency).
+* **Pipelining:** To further increase throughput for applications that process continuous data, the adder could be pipelined. This would involve adding registers between the CLA block stages.
+
+
+## Getting Started For Test
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/ElecGiuseppe-lab/N-bit_Configurable_CLA.git
+```
+
+### 2. Create Project and Run Simulation
+
+The VHDL source files are located in the `src` directory, and the corresponding testbench are in the `sim` directory.
