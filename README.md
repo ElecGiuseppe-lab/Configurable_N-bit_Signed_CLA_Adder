@@ -35,20 +35,14 @@ C<sub>i+1</sub> = g<sub>i</sub> + p<sub>i</sub> · C<sub>i</sub> = g<sub>i</sub>
 It is clear that the carry bits depend exclusively on the CLA input carry (C<sub>in</sub> = C<sub>0</sub>), as well as the p<sub>i</sub> and g<sub>i</sub> signals.
 Consequently, all carry bits, as well as the sum bits, will be calculated simultaneously, optimizing the sum calculation between two operands. However, the improvement in speed leads to an increase in circuit complexity.  
 In particular, calculating the carry to the i-th stage requires the use of AND and OR logic gates with a number of inputs equal to <em>n</em> + 1. This design choice leads to an increase in the occupied area and introduces greater constraints related to **fan-in** of the logic gates that must be appropriately considered during the design phase.  
-.  
-.  
-.  
-WORK IN PROGRES.........  
-.  
-.  
-.  
+
 
 ## Theorical Architectural Overview
 
 The CLA adder is composed of two fundamental blocks:
 
 1. **FA block:** Dedicated to the generation of the sum and the <em>p<sub>i</sub></em> and <em>g<sub>i</sub></em> signals.
-2. **CLA block:** Dedicated to fast calculation of carry overs using <em>**group propagate**</em> (<em>pp<sub>i</sub></em>) and <em>**group generate**</em> (<em>gp<sub>i</sub></em>) signals.
+2. **CLA block:** Dedicated to fast calculation of carry overs using <em>**propagate**</em> (<em>p<sub>i</sub></em>) and <em>**generate**</em> (<em>g<sub>i</sub></em>) signals.
 
 ![alt text](https://github.com/ElecGiuseppe-lab/N-bit_Configurable_CLA/blob/master/img/block_diagram.png)
 
@@ -56,7 +50,7 @@ The CLA adder is composed of two fundamental blocks:
 ## Key Features
 
 * **N-bit Addition:** Perform addition on two N-bit `std_logic_vector` inputs.
-* **High-Speed Architecture:** Implements the CLA algorithm based on <em>gp<sub>i</sub></em> and <em>gg<sub>i</sub></em> signals to minimize the propagation delay associated with carry signals and minimize fan-in issues, offering a significant performance advantage over a standard RCA.
+* **High-Speed Architecture:** Implements the CLA algorithm based on <em>p<sub>i</sub></em> and <em>g<sub>i</sub></em> signals to minimize the propagation delay associated with carry signal, offering a significant performance advantage over a standard RCA.
 * **Scalable Design:** The architecture is configurable, as the implementation has been structured to allow the CLA size to be parameterized during instantiation, depending on the application needs.
 * **2's Complement Representation:** Sign extension has been implemented to ensure the correct representation of negative values. For positive operands, an adequate word length must be used to prevent overflow (ex. 255 -> 8-bit to extend 9-bit).
 
@@ -66,5 +60,5 @@ The CLA adder is composed of two fundamental blocks:
 The adder is constructed using three primary components in a hierarchical structure:  
 
 1. **`CLA.vhd`**: The top-level entity that instantiates and connects `CarryGen` and `FA_CLA` components to form the N-bit adder.
-2. **`CarryGen.vhd`**: A N-bit block that contains the core CLA logic. It generates <em>pp<sub>i</sub></em> and <em>gp<sub>i</sub></em> signals for fast calculation of carry bits (in parallel).
+2. **`CarryGen.vhd`**: A N-bit block that contains the core CLA logic. It generates <em>p<sub>i</sub></em> and <em>g<sub>i</sub></em> signals for fast calculation of carry bits (in parallel).
 3. **`FA_CLA.vhd`**: A slightly modified 1-bit FA (without output carry), which serves as the fundamental building block for calculating the p<sub>i</sub> and g<sub>i</sub> signals, and the sum.
