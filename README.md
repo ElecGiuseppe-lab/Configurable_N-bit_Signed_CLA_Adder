@@ -55,7 +55,7 @@ The CLA adder is composed of two fundamental blocks:
 * **2's Complement Representation:** Sign extension has been implemented to ensure the correct representation of negative values. For positive operands, an adequate word length must be used to prevent overflow (e.g. 255 -> 8-bit to extend 9-bit).
 
 
-## Architectural Overview
+## Practical Architectural Overview
 
 The adder is constructed using three primary components in a hierarchical structure:  
 
