@@ -12,7 +12,7 @@ end CLA;
 
 architecture Behavioral of CLA is
 
-	signal P, G: std_logic_vector(WidthCLA-1 downto 0);
+	signal p_int, g_int: std_logic_vector(WidthCLA-1 downto 0);
 	signal C: std_logic_vector(WidthCLA downto 0);
 
 	begin
@@ -24,8 +24,8 @@ architecture Behavioral of CLA is
 														A => A(i),
 														B => B(i),
 														Cin => C(i),
-														P => P(i),
-														g => G(i),
+														P => p_int(i),
+														g => g_int(i),
 														S => S(i)
 													);													
 								end generate;														
@@ -46,8 +46,8 @@ architecture Behavioral of CLA is
         CLA: entity work.CarryGen
         generic map (N=>WidthCLA)
         port map(
-                    P_cla => P,
-                    G_cla => G,
+                    p => p_int,
+                    g => g_int,
                     Cin => '0',
                     C => C
                 );	
