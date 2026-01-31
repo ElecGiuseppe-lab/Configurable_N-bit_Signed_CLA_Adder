@@ -25,17 +25,62 @@ begin
 
     -- Stimulus process: apply inputs
     stimulus:	process
+                
+                variable expected: signed(8 downto 0);    -- expected result
+                variable error_found  : boolean := false;
+            
 					begin
 						-- Test with various input values
 						wait for 100 ns;
+						
+						report 
+						      "-----------------------------------------------------------------" & character'val(10) &
+                              "      TEST RUN..." & character'val(10) &
+						      "      -----------------------------------------------------------------" 
+						severity note;
+						
 						for i in -5 to 10 loop
 							for j in -4 to 4 loop
 								A_tb <= std_logic_vector(to_signed(i, A_tb'length));
-								B_tb <= std_logic_vector(to_signed(j+2, B_tb'length));
-								wait for 10 ns;  -- Wait for some time for the output to settle
+								B_tb <= std_logic_vector(to_signed(j+2, B_tb'length));	
+												
+								expected := to_signed(i, Sum_tb'length) + to_signed(j+2, Sum_tb'length);												
+														
+							    wait for 10 ns;  -- Wait for some time for the output to settle																															
+								
+                                if signed(Sum_tb) /= expected then
+                                    error_found := true;
+                                else
+                                    error_found := error_found;
+                                    report "*** Expected value: " & integer'image(to_integer(signed(Sum_tb))) &
+                                            " Obtained value: " & integer'image(to_integer(expected)) & " ***"
+                                    severity note;                                    
+                                end if;								
+								
+								-- automatic result control
+								assert (to_integer(signed(Sum_tb)) = expected)
+                                report "*** Output mismatch. Expected value: " & integer'image(to_integer(signed(Sum_tb))) &
+                                        " Obtained value: " & integer'image(to_integer(expected)) & " ***"
+								severity error;																																																
 							end loop;
 						end loop;
+						
+						if (error_found) then
+                            report 
+                                  "-----------------------------------------------------------------" & character'val(10) &
+                                  "      TEST COMPLETED! ERROR/S IDENTIFIED...CHECK THE SOURCE CODE" & character'val(10) &
+                                  "      -----------------------------------------------------------------" 
+                            severity note;
+                        else
+                            report 
+                                  "-----------------------------------------------------------------" & character'val(10) &
+                                  "      TEST COMPLETED! NO ERROR/S IDENTIFIED." & character'val(10) &
+                                  "      -----------------------------------------------------------------" 
+                            severity note;                        
+                        end if;
+						
 						wait;
+						
 				end process stimulus;
 
 end Behavioral;
