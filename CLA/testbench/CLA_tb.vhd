@@ -52,14 +52,14 @@ begin
                                     error_found := true;
                                 else
                                     error_found := error_found;
-                                    report "*** Expected value: " & integer'image(to_integer(signed(Sum_tb))) &
+                                    report "*** Output OK! Expected value: " & integer'image(to_integer(signed(Sum_tb))) &
                                             " Obtained value: " & integer'image(to_integer(expected)) & " ***"
                                     severity note;                                    
                                 end if;								
 								
-								-- automatic result control
+								-- automatic report errors
 								assert (to_integer(signed(Sum_tb)) = expected)
-                                report "*** Output mismatch. Expected value: " & integer'image(to_integer(signed(Sum_tb))) &
+                                report "*** Output mismatch! Expected value: " & integer'image(to_integer(signed(Sum_tb))) &
                                         " Obtained value: " & integer'image(to_integer(expected)) & " ***"
 								severity error;																																																
 							end loop;
