@@ -35,7 +35,7 @@ architecture Behavioral of CLA is
 											port map (
 														A => A(i-1),
 														B => B(i-1),
-														Cin => C(WidthCLA),
+														Cin => C(WidthCLA),	-- Cout
 														P => open,
 														g => open,
 														S => S(i)
