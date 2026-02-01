@@ -84,12 +84,16 @@ The design was verified using the `CLA_tb.vhd` testbench. This testbench is self
 
 ## Getting Started For Test
 
-### 1. Clone the repository
+### Prerequisites
+- Xilinx Vivado Design Suite
+- Knowledge of VHDL
+- Basic understanding of signals and systems
 
-```bash
-git clone https://github.com/ElecGiuseppe-lab/N-bit_Configurable_CLA.git
-```
-
-### 2. Create Project and Run Simulation
-
-The VHDL source files are located in the `src` directory, and the corresponding testbench are in the `sim` directory.
+### Steps to Run the Project
+1. Clone the repository
+   ```bash
+   git clone https://github.com/ElecGiuseppe-lab/N-bit_Configurable_CLA.git
+   ```
+2. Open Vivado and create a new project
+3. Add the provided VHDL files (the VHDL source files are located in the `src` directory).
+5. Run Behavioral simulation (the corresponding testbench are in the `sim` directory).
