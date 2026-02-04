@@ -61,7 +61,7 @@ The CLA adder is composed of two fundamental blocks:
 
 The adder is constructed using three primary components in a hierarchical structure:  
 
-1. **`CLA.vhd`**: The top-level entity that instantiates and connects `CarryGen` and `FA_CLA` components to form the N-bit adder.
+1. **`CLA_adder.vhd`**: The top-level entity that instantiates and connects `CarryGen` and `FA_CLA` components to form the N-bit adder.
 2. **`CarryGen.vhd`**: A N-bit block that contains the core CLA logic. It generates <em>p<sub>i</sub></em> and <em>g<sub>i</sub></em> signals for fast calculation of carry bits (in parallel).
 3. **`FA_CLA.vhd`**: A slightly modified 1-bit FA (without output carry), which serves as the fundamental building block for calculating the p<sub>i</sub> and g<sub>i</sub> signals, and the sum.
 
@@ -97,5 +97,5 @@ The design was verified using the `CLA_tb.vhd` testbench. This testbench is self
    git clone https://github.com/ElecGiuseppe-lab/N-bit_Configurable_CLA.git
    ```
 2. Open Vivado and create a new project.
-3. Add the provided VHDL files (the VHDL source files are located in the `src` directory).
-5. Run behavioral simulation (the corresponding testbench are in the `sim` directory).
+3. Add the provided VHDL files (the VHDL source files are located in the `CLA_Adder/src` directory).
+5. Run behavioral simulation (the corresponding testbench are in the `CLA_Adder/sim` directory).
