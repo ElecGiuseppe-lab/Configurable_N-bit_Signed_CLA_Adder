@@ -98,4 +98,4 @@ The design was verified using the `CLA_tb.vhd` testbench. This testbench is self
    ```
 2. Open Vivado and create a new project.
 3. Add the provided VHDL source files (the VHDL source files are located in the `CLA_Adder/src` directory).
-5. Run behavioral simulation (the corresponding testbench are in the `CLA_Adder/sim` directory).
+4. Run behavioral simulation (the corresponding testbench are in the `CLA_Adder/sim` directory).
